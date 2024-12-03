@@ -12,7 +12,17 @@ xfs_growfs /home
 xfs_growfs /var/tmp
 xfs_growfs /var
 
-yum install java-17-openjdk -y
+# java, terraform and nodejs installation 
+sudo curl -o /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo cat /etc/yum.repos.d/jenkins.repo 
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+# Add required dependencies for the jenkins package
+sudo yum install fontconfig java-17-openjdk -y 
+sudo yum install jenkins -y 
+sudo systemctl daemon-reload
+sudo systemctl start jenkins 
+sudo systemctl enable jenkins
+
 yum install -y yum-utils
 yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 yum -y install terraform
@@ -21,7 +31,7 @@ dnf module enable nodejs:20 -y
 dnf install nodejs -y
 yum install zip -y
 
-# docker
+# docker installation 
 yum install -y yum-utils
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
