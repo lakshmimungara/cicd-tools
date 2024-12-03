@@ -21,6 +21,3 @@ xfs_growfs /
 xfs_growfs /var/tmp
 xfs_growfs /var
 
-systemctl daemon-reload
-systemctl enable jenkins
-systemctl start jenkins
