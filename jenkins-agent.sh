@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #resize disk from 20GB to 50GB
@@ -12,11 +11,7 @@ xfs_growfs /home
 xfs_growfs /var/tmp
 xfs_growfs /var
 
-
-# Add required dependencies for the jenkins package
-sudo yum install fontconfig java-17-openjdk -y 
-
-
+yum install java-17-openjdk -y
 yum install -y yum-utils
 yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 yum -y install terraform
@@ -25,7 +20,7 @@ dnf module enable nodejs:20 -y
 dnf install nodejs -y
 yum install zip -y
 
-# docker installation 
+# docker
 yum install -y yum-utils
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
@@ -37,3 +32,9 @@ usermod -aG docker ec2-user
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
+
+# Maven for Java projects
+dnf install maven -y
+
+# Python for python projects
+dnf install python3.11 gcc python3-devel -y

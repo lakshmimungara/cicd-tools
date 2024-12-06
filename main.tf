@@ -1,4 +1,3 @@
-
 module "jenkins" {
   source  = "terraform-aws-modules/ec2-instance/aws"
 
@@ -6,7 +5,7 @@ module "jenkins" {
 
   instance_type          = "t3.small"
   vpc_security_group_ids = ["sg-0525227f8e227493c"] #replace your SG
-  subnet_id = "subnet-057a823df234beef9" #replace your Subnet
+  subnet_id = "subnet-0e9e7261afb43d612" #replace your Subnet
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins.sh")
   tags = {
@@ -30,7 +29,7 @@ module "jenkins_agent" {
 
   instance_type          = "t3.small"
   vpc_security_group_ids = ["sg-0525227f8e227493c"]
-  subnet_id = "subnet-057a823df234beef9"
+  subnet_id = "subnet-0e9e7261afb43d612"
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins-agent.sh")
   tags = {

@@ -1,5 +1,4 @@
 
-
 data "aws_ami" "ami_info" {
 
     most_recent = true
